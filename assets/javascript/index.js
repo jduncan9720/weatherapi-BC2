@@ -1,8 +1,12 @@
 var currentDate = moment().format('L');
-var currentCity = "Salt Lake City"
-
+var currentCity = ""
 
 function firstRender() {
     $("#curNameDate").text(currentCity + ": " + currentDate)
     console.log(currentDate)
 }
+
+$("#findCity").click(function(){
+    currentCity = $("#cityName").val()
+    firstRender()
+})
