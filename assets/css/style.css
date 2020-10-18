@@ -1,0 +1,21 @@
+body {
+    background-color: white;
+}
+
+#cityName {
+    width: 80%;
+}
+
+#searchRow {
+    display: flex;
+
+}
+
+.row{
+    padding: 20px;
+}
+
+#nameDate{
+    display: flex;
+
+}
