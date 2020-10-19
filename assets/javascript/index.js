@@ -4,6 +4,7 @@ var currentLat = "";
 var currentLon = "";
 
 
+
 function firstRender() {
     $("#curNameDate").text(currentCity + ": " + currentDate)
     console.log(currentDate)
@@ -73,11 +74,13 @@ function getFive(){
         console.log(response)
         for (let i = 5; i < response.list.length; i+=8) {
             // console.log("Temperature " + i + ": " + ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)+ " f");
+            var date = $("<p>").addClass("fiveDay").text(currentDate);
+            var icon = $("<p>").addClass("fiveDay").text("Icon: " + response.list[i].weather.icon)
             var fiveTemp = $("<p>").addClass("fiveDay").text("Temperature: " + ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)+ " f");
             var fiveHumid = $("<p>").addClass("fiveDay").text("Humidity: " + response.list[i].main.humidity +" %");
             var fiveCard = $('<div class="card" style="width: 18rem;">')
 
-            $("#fiveDay").append([$(fiveCard).append([fiveTemp, fiveHumid])]);
+            $("#fiveDay").append($(fiveCard).append(date, icon, fiveTemp, fiveHumid));
         }
     
         
