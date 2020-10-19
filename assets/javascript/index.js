@@ -75,14 +75,14 @@ function getFive(){
         for (let i = 5; i < response.list.length; i+=8) {
             // console.log("Temperature " + i + ": " + ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)+ " f");
             var date = $("<p>").addClass("fiveDay").text(currentDate);
-            var icon = $("<p>").addClass("fiveDay").text("Icon: " + response.list[i].weather.icon)
+            var icon = $("<img>").addClass("fiveDay imageIcon").attr("src", "http://openweathermap.org/img/wn/"+ response.list[i].weather[0].icon +"@2x.png")
             var fiveTemp = $("<p>").addClass("fiveDay").text("Temperature: " + ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)+ " f");
             var fiveHumid = $("<p>").addClass("fiveDay").text("Humidity: " + response.list[i].main.humidity +" %");
-            var fiveCard = $('<div class="card" style="width: 18rem;">')
-
+            var fiveCard = $('<div class="card" style="width: 15rem;">')
+            //console.log(response.list[i].weather[0].icon)
             $("#fiveDay").append($(fiveCard).append(date, icon, fiveTemp, fiveHumid));
         }
-    
+        
         
     })
 };

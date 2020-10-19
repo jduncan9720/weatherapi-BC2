@@ -21,5 +21,17 @@ body {
 }
 
 #fiveDay{
-    display: flex
+    display: flex;
+}
+
+.imageIcon{
+    width: 50px;
+    height: auto;
+}
+
+.card{
+    margin: 5px;
+    padding: 5px;
+    background-color: blue;
+    color: white;
 }
