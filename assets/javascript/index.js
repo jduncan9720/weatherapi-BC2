@@ -28,13 +28,15 @@ function getWeather() {
         console.log(response);
         currentLon = response.coord.lon;
         currentLat = response.coord.lat;
-        var temp = (response.main.temp - 273.15) * 1.80 + 32;
-        var humidity = response.main.humidity;
-        var windSpeed = response.wind.speed;
+        var temp = $("<p>").addClass("current").text("Temperature: " + ((response.main.temp - 273.15) * 1.80 + 32).toFixed(2)+ " f");
+        var humidity = $("<p>").addClass("current").text("Humidity: " + response.main.humidity + " %");
+        var windSpeed = $("<p>").addClass("current").text("Wind Speed: " + response.wind.speed + " MPH");
         
-        console.log("Temperature: " + temp + " f");
-        console.log("Humidity: " + humidity + "%");
-        console.log("Wind Speed: " + windSpeed + " MPH");
+        $("#curWeather").append(temp, humidity, windSpeed);
+
+        // console.log("Temperature: " + temp + " f");
+        // console.log("Humidity: " + humidity + "%");
+        // console.log("Wind Speed: " + windSpeed + " MPH");
         console.log("Latitude: " + currentLat)
         console.log("Longitude: " + currentLon)
         
@@ -52,9 +54,9 @@ function getUV(){
         method: "GET"
     }).then(function(response){
         console.log(response);
-        var uvIndex = response.value
-        console.log("UV Index: " + uvIndex)
-        
+        var uvIndex = $("<p>").addClass("current").text("UV Index: " + response.value);
+        // console.log("UV Index: " + uvIndex)
+        $("#curWeather").append(uvIndex);
     })
 };
 
