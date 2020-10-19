@@ -41,6 +41,7 @@ function getWeather() {
         console.log("Longitude: " + currentLon)
         
         getUV();
+        getFive()
     })
     
 };
@@ -60,3 +61,25 @@ function getUV(){
     })
 };
 
+function getFive(){
+    var apiKey = "b83223f78956aa8a1f4ff4a30fa9435f"
+    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + currentCity + "&appid=" + apiKey
+    
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response)
+        for (let i = 5; i < response.list.length; i+=8) {
+            // console.log("Temperature " + i + ": " + ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)+ " f");
+            var fiveTemp = $("<p>").addClass("fiveDay").text("Temperature: " + ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)+ " f");
+            var fiveHumid = $("<p>").addClass("fiveDay").text("Humidity: " + response.list[i].main.humidity +" %");
+            var fiveCard = $('<div class="card" style="width: 18rem;">')
+
+            $("#fiveDay").append([$(fiveCard).append([fiveTemp, fiveHumid])]);
+        }
+    
+        
+    })
+};
