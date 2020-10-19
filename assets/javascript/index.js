@@ -1,7 +1,8 @@
 var currentDate = moment().format('L');
 var currentCity = "";
-var currentLon = "";
 var currentLat = "";
+var currentLon = "";
+
 
 function firstRender() {
     $("#curNameDate").text(currentCity + ": " + currentDate)
@@ -34,8 +35,9 @@ function getWeather() {
         console.log("Temperature: " + temp + " f");
         console.log("Humidity: " + humidity + "%");
         console.log("Wind Speed: " + windSpeed + " MPH");
-        console.log("Longitude: " + currentLon)
         console.log("Latitude: " + currentLat)
+        console.log("Longitude: " + currentLon)
+        
         getUV();
     })
     
