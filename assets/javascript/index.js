@@ -1,6 +1,10 @@
-var currentDate = moment().format('L');  
+var currentDate = moment().format('L');
+var currentCity = "Heber City";
+var cities = [];
+var cityData = localStorage.getItem("cities")
+var lastCityParse = JSON.parse(cityData);
+var lastCity = lastCityParse[lastCityParse.length-1];
 var daysAhead = 1;
-var currentCity = "";
 var currentLat = "";
 var currentLon = "";
 
@@ -8,12 +12,18 @@ var currentLon = "";
 
 function firstRender() {
     $("#curNameDate").text(currentCity + ": " + currentDate)
-    console.log(currentDate)
+    console.log(lastCity)
 }
 
 $("#findCity").click(function(event){
     event.preventDefault();
+    if (JSON.parse(localStorage.getItem("cities")) !== null) {
+        cities = JSON.parse(localStorage.getItem("cities"));
+    }
     currentCity = $("#cityName").val()
+    cities.push(currentCity)
+    localStorage.setItem("cities", JSON.stringify(cities))
+    
     firstRender();
     getWeather();
     
@@ -76,6 +86,8 @@ function getFive(){
         for (let i = 5; i < response.list.length; i+=8) {
             // console.log("Temperature " + i + ": " + ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)+ " f");
             var fiveDate = moment().add(daysAhead, 'days').format('L'); 
+            //var fiveDate = $("<p>").addClass("fiveDay").text(response.list[i].clouds);
+            //console.log(response.list[i].clouds.dt_txt)
             var date = $("<p>").addClass("fiveDay").text(fiveDate);
             var icon = $("<img>").addClass("fiveDay imageIcon").attr("src", "http://openweathermap.org/img/wn/"+ response.list[i].weather[0].icon +"@2x.png")
             var fiveTemp = $("<p>").addClass("fiveDay").text("Temperature: " + ((response.list[i].main.temp - 273.15) * 1.80 + 32).toFixed(2)+ " f");
