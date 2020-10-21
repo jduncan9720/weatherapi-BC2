@@ -73,7 +73,7 @@ function getWeather() {
     }).then(function (response) {
         console.log(response)
         $("#curNameDate").text(displayCity + " : " + currentDate)
-        var temp = $("<p>").addClass("current").text("Temperature: " + ((response.current.temp - 273.15) * 1.80 + 32).toFixed(2) + " f");
+        var temp = $("<p>").addClass("current").text("Temperature: " + ((response.current.temp - 273.15) * 1.80 + 32).toFixed(2) + " " + String.fromCharCode(8457));
         var humidity = $("<p>").addClass("current").text("Humidity: " + response.current.humidity + " %");
         var windSpeed = $("<p>").addClass("current").text("Wind Speed: " + response.current.wind_speed + " MPH");
         var uvIndex = $("<p>").addClass("current").text("UV Index: " + response.current.uvi);
@@ -90,7 +90,7 @@ function getWeather() {
             var fiveCard = $('<div class="card" style="width: 15rem;">')
             var fiveDate = $("<p>").addClass("fiveDay").text(response.daily[i].dt);
             var fiveIcon = $("<img>").addClass("fiveDay imageIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + "@2x.png")
-            var fiveTemp = $("<p>").addClass("fiveDay").text("Temperature: " + ((response.daily[i].temp.day - 273.15) * 1.80 + 32).toFixed(2) + " f");
+            var fiveTemp = $("<p>").addClass("fiveDay").text("Temperature: " + ((response.daily[i].temp.day - 273.15) * 1.80 + 32).toFixed(2) + " " + String.fromCharCode(8457));
             var fiveHumid = $("<p>").addClass("fiveDay").text("Humidity: " + response.daily[i].humidity + " %");
             
             $("#fiveDay").append($(fiveCard).append(fiveDate, fiveIcon, fiveTemp, fiveHumid));
