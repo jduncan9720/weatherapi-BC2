@@ -13,10 +13,10 @@ function firstRender() {
         displayCity = "Salt Lake City"
         cities.push(displayCity)
         localStorage.setItem("cities", JSON.stringify(cities))
-        $("#curNameDate").text(displayCity + " : " + currentDate)
+        //$("#curNameDate").text(displayCity + " : " + currentDate)
     } else {
         displayCity = lastCityParse[lastCityParse.length - 1]
-        $("#curNameDate").text(displayCity + ": " + currentDate)
+        //$("#curNameDate").text(displayCity + ": " + currentDate)
         console.log(displayCity) 
     }
     getLocation()
@@ -72,6 +72,7 @@ function getWeather() {
         method: "GET"
     }).then(function (response) {
         console.log(response)
+        $("#curNameDate").text(displayCity + " : " + currentDate)
         var temp = $("<p>").addClass("current").text("Temperature: " + ((response.current.temp - 273.15) * 1.80 + 32).toFixed(2) + " f");
         var humidity = $("<p>").addClass("current").text("Humidity: " + response.current.humidity + " %");
         var windSpeed = $("<p>").addClass("current").text("Wind Speed: " + response.current.wind_speed + " MPH");
@@ -98,4 +99,11 @@ function getWeather() {
 }
 
 
+$(".btnDiv").on("click", ".cityClick", function(event){
+    event.preventDefault();
+    var buttonCity = $(this).text()
+    console.log(buttonCity)
+    displayCity = buttonCity
+    getLocation()
+})
 
