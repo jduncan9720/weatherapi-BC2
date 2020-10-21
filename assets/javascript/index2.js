@@ -32,15 +32,17 @@ $("#findCity").click(function (event) {
     cities.push(currentCity)
     localStorage.setItem("cities", JSON.stringify(cities))
     
+    cityData = localStorage.getItem("cities");
+    lastCityParse = JSON.parse(cityData);
     firstRender();
-    getWeather();
+    
 
 });
 
-function getWeather(city) {
+function getLocation() {
     var apiKey = "b83223f78956aa8a1f4ff4a30fa9435f"
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + displayCity + "&appid=" + apiKey
-    console.log(displayCity)
+
     $.ajax({
         url: queryURL,
         method: "GET"
