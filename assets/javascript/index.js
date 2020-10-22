@@ -74,7 +74,9 @@ function getWeather() {
     }).then(function (response) {
         console.log(response)
         uv = response.current.uvi
-        $("#curNameDate").text(displayCity + " : " + currentDate)
+        var currIcon = $("<img>").addClass("current imageIcon").attr("src", "http://openweathermap.org/img/wn/" + response.current.weather[0].icon + "@2x.png")
+        $("#curNameDate").text(displayCity + " : " + currentDate);
+        $("#curNameDate").append(currIcon);
         var temp = $("<p>").addClass("current").text("Temperature: " + ((response.current.temp - 273.15) * 1.80 + 32).toFixed(2) + " " + String.fromCharCode(8457));
         var humidity = $("<p>").addClass("current").text("Humidity: " + response.current.humidity + " %");
         var windSpeed = $("<p>").addClass("current").text("Wind Speed: " + response.current.wind_speed + " MPH");
