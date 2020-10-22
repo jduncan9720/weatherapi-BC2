@@ -28,7 +28,7 @@ function firstRender() {
 
 function getLocation() {
     var apiKey = "b83223f78956aa8a1f4ff4a30fa9435f"
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + displayCity + "&appid=" + apiKey
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + displayCity + "&appid=" + apiKey
 
     $.ajax({
         url: queryURL,
@@ -68,7 +68,7 @@ function getWeather() {
     $("#curWeather").empty();
     $("#fiveDay").empty();
     var apiKey = "b83223f78956aa8a1f4ff4a30fa9435f"
-    var queryURL = "http://api.openweathermap.org/data/2.5/onecall?lat=" + currentLat + "&lon=" + currentLon + "&appid=" + apiKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + currentLat + "&lon=" + currentLon + "&appid=" + apiKey;
 
     $.ajax({
         url: queryURL,
@@ -86,7 +86,7 @@ function getWeather() {
 
         $("#curWeather").append(temp, humidity, windSpeed, uvIndex);
         console.log(uv)
-        console.log("Icon: " + "http://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + "@2x.png")
+        console.log("Icon: " + "https://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + "@2x.png")
         console.log("Temp: " + ((response.daily[1].temp.day - 273.15) * 1.80 + 32).toFixed(2) + " f")
         console.log("Humidity: " + response.daily[1].humidity + " %")
 
@@ -94,7 +94,7 @@ function getWeather() {
             var epochDate = response.daily[i].dt;
             var fiveCard = $('<div class="card" style="width: 15rem;">')
             var fiveDate = $("<p>").addClass("fiveDay").text(moment.unix(epochDate).format('L'));
-            var fiveIcon = $("<img>").addClass("fiveDay imageIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + "@2x.png")
+            var fiveIcon = $("<img>").addClass("fiveDay imageIcon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + "@2x.png")
             var fiveTemp = $("<p>").addClass("fiveDay").text("Temperature: " + ((response.daily[i].temp.day - 273.15) * 1.80 + 32).toFixed(2) + " " + String.fromCharCode(8457));
             var fiveHumid = $("<p>").addClass("fiveDay").text("Humidity: " + response.daily[i].humidity + " %");
             
