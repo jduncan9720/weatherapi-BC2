@@ -1,7 +1,9 @@
 body {
     background-image: url("../images/skybg.jpg");
-    background-repeat: no-repeat;
     background-size: 100%;
+    background-attachment: fixed;
+    
+    
     font-family: 'Merriweather', serif;
 }
 header{
@@ -44,6 +46,7 @@ header{
 .cityClick{
     display: block;
     margin: 5px;
+    width: 200px;
 }
 
 #searchDiv{
