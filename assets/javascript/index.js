@@ -8,6 +8,8 @@ var currentLat = "";
 var cityBtn = "";
 var uv = "";
 
+$(document).ready(firstRender);
+
 function firstRender() {
 
     if (JSON.parse(localStorage.getItem("cities")) == null) {
