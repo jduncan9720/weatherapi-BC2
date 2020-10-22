@@ -1,5 +1,7 @@
 body {
-    background-color: white;
+    background-image: url("../images/skybg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
     font-family: 'Merriweather', serif;
 }
 
@@ -42,7 +44,7 @@ body {
 }
 
 #searchDiv{
-    background-color: rgb(238, 231, 231);
+    background-color: rgb(238, 231, 231, 0.5);
     padding-top: 10px;
     padding-bottom: 10px;
 }
