@@ -52,6 +52,20 @@ body {
     padding-bottom: 10px;
 }
 
-.uvColor{
-    background-color: lightgreen;
+
+.uvLow{
+    
+    background-color: green;
+    color: white;
+    padding: 5px
+}
+.uvModerate{
+    background-color: orange;
+    color: white;
+    padding: 5px
+}
+.uvHigh{
+    background-color: red;
+    color: white;
+    padding: 5px
 }

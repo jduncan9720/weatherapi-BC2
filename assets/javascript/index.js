@@ -6,6 +6,7 @@ var lastCityParse = JSON.parse(cityData);
 var currentLon = "";
 var currentLat = "";
 var cityBtn = "";
+var uv = "";
 
 function firstRender() {
 
@@ -72,14 +73,15 @@ function getWeather() {
         method: "GET"
     }).then(function (response) {
         console.log(response)
+        uv = response.current.uvi
         $("#curNameDate").text(displayCity + " : " + currentDate)
         var temp = $("<p>").addClass("current").text("Temperature: " + ((response.current.temp - 273.15) * 1.80 + 32).toFixed(2) + " " + String.fromCharCode(8457));
         var humidity = $("<p>").addClass("current").text("Humidity: " + response.current.humidity + " %");
         var windSpeed = $("<p>").addClass("current").text("Wind Speed: " + response.current.wind_speed + " MPH");
-        var uvIndex = $("<p>").addClass("current").text("UV Index: ").append("<span class='uvColor'>" + response.current.uvi + '</span>');
+        var uvIndex = $("<p>").addClass("current").text("UV Index: ").append("<span id=uvColor class'>" + uv + '</span>');
 
         $("#curWeather").append(temp, humidity, windSpeed, uvIndex);
-        
+        console.log(uv)
         console.log("Icon: " + "http://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + "@2x.png")
         console.log("Temp: " + ((response.daily[1].temp.day - 273.15) * 1.80 + 32).toFixed(2) + " f")
         console.log("Humidity: " + response.daily[1].humidity + " %")
@@ -93,8 +95,9 @@ function getWeather() {
             var fiveHumid = $("<p>").addClass("fiveDay").text("Humidity: " + response.daily[i].humidity + " %");
             
             $("#fiveDay").append($(fiveCard).append(fiveDate, fiveIcon, fiveTemp, fiveHumid));
-       }
-    })
+            
+       }uvColor()
+    })  
 }
 
 $(".btnDiv").on("click", ".cityClick", function(event){
@@ -105,3 +108,13 @@ $(".btnDiv").on("click", ".cityClick", function(event){
     getLocation()
 })
 
+function uvColor(){
+    console.log(uv)
+    if (uv <= 2.99){
+    $("#uvColor").addClass("uvLow")
+    }if (uv > 3 && uv <= 5.99){
+        $("#uvColor").addClass("uvModerate")
+    }if (uv > 6){
+        $("#uvColor").addClass("uvHigh")
+    }
+}
