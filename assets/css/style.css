@@ -35,3 +35,12 @@ body {
     background-color: blue;
     color: white;
 }
+
+.cityClick{
+    display: block;
+    margin: 5px;
+}
+
+#searchDiv{
+    background-color: rgb(238, 231, 231);
+}
