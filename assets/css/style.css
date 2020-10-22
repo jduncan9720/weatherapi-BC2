@@ -4,6 +4,9 @@ body {
     background-size: 100%;
     font-family: 'Merriweather', serif;
 }
+header{
+    background-color: teal;
+}
 
 #cityName {
     width: 80%;
@@ -34,7 +37,7 @@ body {
 .card{
     margin: 5px;
     padding: 5px;
-    background-color: blue;
+    background-color:teal;
     color: white;
 }
 

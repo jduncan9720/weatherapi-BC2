@@ -57,7 +57,7 @@ $("#findCity").click(function (event) {
 function renderButtons() {
     $(".btnDiv").empty();
     for (let i = 0; i < lastCityParse.length; i++) {
-        cityBtn = $('<button class="btn btn-success cityClick">').text(lastCityParse[i])
+        cityBtn = $('<button class="btn btn-primary cityClick">').text(lastCityParse[i])
         $(".btnDiv").append(cityBtn)
     }
 }
