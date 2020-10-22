@@ -1,5 +1,6 @@
 body {
     background-color: white;
+    font-family: 'Merriweather', serif;
 }
 
 #cityName {
@@ -8,7 +9,6 @@ body {
 
 #searchRow {
     display: flex;
-
 }
 
 .row{
@@ -25,7 +25,7 @@ body {
 }
 
 .imageIcon{
-    width: 50px;
+    width: 60px;
     height: auto;
 }
 
@@ -43,4 +43,11 @@ body {
 
 #searchDiv{
     background-color: rgb(238, 231, 231);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#resultsDiv{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

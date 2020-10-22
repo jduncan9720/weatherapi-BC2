@@ -78,7 +78,7 @@ function getWeather() {
         var windSpeed = $("<p>").addClass("current").text("Wind Speed: " + response.current.wind_speed + " MPH");
         var uvIndex = $("<p>").addClass("current").text("UV Index: " + response.current.uvi);
 
-        $("#curWeather").append(temp, humidity, uvIndex, windSpeed);
+        $("#curWeather").append(temp, humidity, windSpeed, uvIndex);
         
         //console.log("Date: " + newDate)
         console.log("Icon: " + "http://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + "@2x.png")
