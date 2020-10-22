@@ -79,16 +79,16 @@ function getWeather() {
         var uvIndex = $("<p>").addClass("current").text("UV Index: " + response.current.uvi);
 
         $("#curWeather").append(temp, humidity, uvIndex, windSpeed);
-
-        console.log("Date: " + response.daily[1].dt)
+        
+        //console.log("Date: " + newDate)
         console.log("Icon: " + "http://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + "@2x.png")
         console.log("Temp: " + ((response.daily[1].temp.day - 273.15) * 1.80 + 32).toFixed(2) + " f")
         console.log("Humidity: " + response.daily[1].humidity + " %")
 
         for (var i = 1; i <= 5; i++) {
-        
+            var epochDate = response.daily[i].dt;
             var fiveCard = $('<div class="card" style="width: 15rem;">')
-            var fiveDate = $("<p>").addClass("fiveDay").text(response.daily[i].dt);
+            var fiveDate = $("<p>").addClass("fiveDay").text(moment.unix(epochDate).format('L'));
             var fiveIcon = $("<img>").addClass("fiveDay imageIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + "@2x.png")
             var fiveTemp = $("<p>").addClass("fiveDay").text("Temperature: " + ((response.daily[i].temp.day - 273.15) * 1.80 + 32).toFixed(2) + " " + String.fromCharCode(8457));
             var fiveHumid = $("<p>").addClass("fiveDay").text("Humidity: " + response.daily[i].humidity + " %");
@@ -97,7 +97,6 @@ function getWeather() {
        }
     })
 }
-
 
 $(".btnDiv").on("click", ".cityClick", function(event){
     event.preventDefault();
