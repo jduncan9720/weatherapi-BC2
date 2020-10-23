@@ -2,7 +2,7 @@ var currentDate = moment().format('L');
 var currentCity = "";
 var cities = [];
 var cityData = localStorage.getItem("cities");
-var lastCityParse = JSON.parse(cityData);
+var lastCityParse = "";
 var currentLon = "";
 var currentLat = "";
 var cityBtn = "";
@@ -18,6 +18,7 @@ function firstRender() {
         localStorage.setItem("cities", JSON.stringify(cities))
         //$("#curNameDate").text(displayCity + " : " + currentDate)
     } else {
+        lastCityParse = JSON.parse(cityData)
         displayCity = lastCityParse[lastCityParse.length - 1]
         //$("#curNameDate").text(displayCity + ": " + currentDate)
         console.log(displayCity) 
@@ -59,11 +60,15 @@ $("#findCity").click(function (event) {
 
 function renderButtons() {
     $(".btnDiv").empty();
+    if (JSON.parse(localStorage.getItem("cities")) == null) {
+        cityBtn = $('<button class="btn btn-primary cityClick">').text("Salt Lake City")
+        $(".btnDiv").append(cityBtn)
+    } else {
     for (let i = 0; i < lastCityParse.length; i++) {
         cityBtn = $('<button class="btn btn-primary cityClick">').text(lastCityParse[i])
         $(".btnDiv").append(cityBtn)
     }
-}
+}}
 
 function getWeather() {
     $("#curWeather").empty();
