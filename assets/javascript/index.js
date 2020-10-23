@@ -53,6 +53,7 @@ $("#findCity").click(function (event) {
 
     cityData = localStorage.getItem("cities");
     lastCityParse = JSON.parse(cityData);
+    $("#cityName").val("");
     firstRender();
 })
 
